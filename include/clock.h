@@ -11,10 +11,13 @@
 #define NVIC_ST_RELOAD_R       (*((volatile unsigned long *)0xE000E014))
 #define NVIC_ST_CURRENT_R      (*((volatile unsigned long *)0xE000E018))
 
-void SysTick_init();
-void PLL_init();
+int SysTick_init();
+int PLL_init();
+int SysTick_Check();
 void SysTick_wait(unsigned int delay);
 void delay_ms(unsigned char delay);
 void delay_us(unsigned char delay);
+
+void software_delay(unsigned long delay);
 
 #endif 

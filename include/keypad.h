@@ -25,8 +25,51 @@
 #define GPIO_PORTE_AMSEL_R      (*((volatile unsigned long *)0x40024528))
 #define GPIO_PORTE_PCTL_R       (*((volatile unsigned long *)0x4002452C))
 
-char Keypad_GetKey();
- 
 
+
+
+
+char Keypad_GetKey();
+void Keypad_Init();
+
+
+typedef enum{
+	ZERO,
+	ONE,
+	TWO,
+	THREE,
+	FOUR,
+	FIVE,
+	SIX,
+	SEVEN,
+	EIGHT,
+	NINE,
+	PLUS,
+	MINUS,
+	DECIMAL,
+	SHIFT,
+	END,
+	EDIT
+}unshifted_value;
+
+typedef enum{
+	PI,
+	SIN,
+	COS,
+	TAN,
+	ARCSIN,
+	ARCCOS,
+	ARCTAN,
+	SQUARE,
+	SQRT,
+	SAVE,
+	MULT,
+	DIV,
+	SCINOT,
+	UNSHIFT,
+	SHIFTEND,
+	CLEAR
+}shifted_value;
+ 
 
 #endif
