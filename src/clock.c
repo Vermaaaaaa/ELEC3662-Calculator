@@ -8,11 +8,7 @@ int SysTick_Init(){
   NVIC_ST_CURRENT_R = 0;                // any write to current clears it             
   NVIC_ST_CTRL_R = 0x00000005;          // enable SysTick with core clock
 	
-	return SysTick_Check();
-}
-
-int SysTick_Check() {
-    if ((NVIC_ST_CTRL_R & 0x01) == 0) {   // Check ENABLE bit
+	if ((NVIC_ST_CTRL_R & 0x01) == 0) {   // Check ENABLE bit
         return ERROR;                        // SysTick not enabled
     }
     if ((NVIC_ST_CTRL_R & 0x02) == 0) {   // Check TICKINT bit

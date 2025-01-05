@@ -2,14 +2,13 @@
 #include "clock.h"
 
 
+int main() {
+    
+	init();
 
-int main(){
-	PLL_init();
-	SysTick_init();
-	
-	int gpio = GPIO_Init();
-	if(gpio == ERROR){
-		
-	}
-	return 0;
+    while (1) {
+        
+    }
+
+    return 0;
 }
