@@ -14,8 +14,8 @@
 int SysTick_init();
 int PLL_init();
 void SysTick_wait(unsigned int delay);
-void delay_ms(unsigned char delay);
-void delay_us(unsigned char delay);
+void delay_millisecond(unsigned char delay);
+void delay_microsecond(unsigned char delay);
 
 void software_delay(unsigned long delay);
 

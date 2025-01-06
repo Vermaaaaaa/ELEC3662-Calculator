@@ -3,7 +3,7 @@
 #include "utility.h"
 
 
-void Keypad_Init(){
+void keypad_init(){
 	
     GPIO_PORTD_LOCK_R = 0x4C4F434B;      // Unlock GPIOCR register
     GPIO_PORTD_CR_R |= 0x0F;  // Allow changes to PD3-PD0

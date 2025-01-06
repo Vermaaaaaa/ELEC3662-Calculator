@@ -12,7 +12,7 @@
 #define MAX_RETRIES 3
 
 int GPIO_Init();
-void triggerSystemReset();
+static void triggerSystemReset();
 
 void init();
 

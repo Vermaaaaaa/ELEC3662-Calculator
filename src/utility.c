@@ -1,7 +1,7 @@
 #include "utility.h"
 #include "clock.h"
 
-int GPIO_Init(){
+int GPIO_init(){
 	volatile unsigned long delay;
 	unsigned int counter  = 0;
 	
@@ -10,7 +10,7 @@ int GPIO_Init(){
 	
 	
 	while((SYSCTL_PRGPIO_R & 0x1B) != 0x1B){
-		delay_us(5);
+		delay_microsecond(5);
 		counter += 5;
 		if(counter >= TIMEOUT){
 			return ERROR;
@@ -21,7 +21,7 @@ int GPIO_Init(){
 	
 }
 
-void triggerSystemReset() {
+static void triggerSystemReset() {
     // Trigger a system reset by writing to NVIC_APINT_R
     NVIC_APINT_R = 0x05FA0004; // Write key (0x05FA) with SysResetReq (bit 8) set
 }

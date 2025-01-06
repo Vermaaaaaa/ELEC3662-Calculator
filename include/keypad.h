@@ -29,8 +29,8 @@
 
 
 
-char Keypad_GetKey();
-void Keypad_Init();
+char keypad_getKey();
+void keypad_init();
 
 
 typedef enum{
