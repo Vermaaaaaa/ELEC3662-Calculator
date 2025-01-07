@@ -46,7 +46,7 @@ void init(){
         }
 
         // Initialize GPIO
-        int gpio = GPIO_Init();
+        int gpio = GPIO_init();
         if (gpio == ERROR) {
             counter++;
         }

@@ -51,11 +51,59 @@ static int lcd_sendByte(unsigned char byte, bool_t isData){
 			break;
 		}
 		default:{
-			delay_microsecond(40);
+			delay_microsecond(50);
 			break;
 		}
 		
 	}
 	
+	return SUCCESS;
+	
+}
+
+int lcd_init(void){
+	
+	delay_millisecond(20);
+	
+	GPIO_PORTA_DATA_R &= ~(0x08 | 0x04);
+	
+	lcd_sendNibble(0x03, false);
+	delay_millisecond(1);
+	lcd_sendNibble(0x03, false);
+	delay_millisecond(1);
+	lcd_sendNibble(0x03, false);
+	delay_millisecond(1);
+	
+	lcd_sendNibble(0x02, false);
+	delay_millisecond(1);
+	
+	lcd_sendByte(FUNCTION_SET | 0x08, false);
+	delay_millisecond(1);
+	
+	lcd_sendByte(DISPLAY_CONTROL, false);
+	delay_millisecond(1);
+	
+	lcd_sendByte(CLEAR, false);
+	delay_millisecond(2);
+	
+	lcd_sendByte(ENTRY_MODE_SET | 0x02, false);
+	delay_millisecond(1);
+	
+	lcd_sendByte(DISPLAY_CONTROL | 0x04, false);
+	delay_millisecond(1);
+
+	//TEMP
+	lcd_sendByte(0x80, false);
+	delay_millisecond(1);
+	
+	return SUCCESS;
+
+	
+}
+
+void lcd_print(const char *str) {
+    while (*str) {
+        lcd_sendByte(*str++, true);
+    }
 }
 

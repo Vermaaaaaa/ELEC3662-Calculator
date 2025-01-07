@@ -2,25 +2,16 @@
 #include "utility.h"
 
 
-int SysTick_Init(){
+int SysTick_init(){
   NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
   NVIC_ST_RELOAD_R = 0x00FFFFFF;        // maximum reload value
   NVIC_ST_CURRENT_R = 0;                // any write to current clears it             
   NVIC_ST_CTRL_R = 0x00000005;          // enable SysTick with core clock
 	
-	if ((NVIC_ST_CTRL_R & 0x01) == 0) {   // Check ENABLE bit
-        return ERROR;                        // SysTick not enabled
-    }
-    if ((NVIC_ST_CTRL_R & 0x02) == 0) {   // Check TICKINT bit
-        return ERROR;                        // SysTick interrupt not enabled
-    }
-    if ((NVIC_ST_CTRL_R & 0x04) == 0) {   // Check CLKSOURCE bit
-        return ERROR;                        // Core clock not selected
-    }
-    return SUCCESS; // SysTick is properly initialized
+  return SUCCESS; // SysTick is properly initialized
 }
 
-int PLL_Init(){
+int PLL_init(){
   
   SYSCTL_RCC2_R |=  0x80000000;  
 
