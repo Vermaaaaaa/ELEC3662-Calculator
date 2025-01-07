@@ -63,16 +63,16 @@ static int lcd_sendByte(unsigned char byte, bool_t isData){
 
 int lcd_init(void){
 	
-	delay_millisecond(20);
+	delay_millisecond(60);
 	
 	GPIO_PORTA_DATA_R &= ~(0x08 | 0x04);
 	
 	lcd_sendNibble(0x03, false);
-	delay_millisecond(1);
+	delay_millisecond(5);
 	lcd_sendNibble(0x03, false);
-	delay_millisecond(1);
+	delay_microsecond(150);
 	lcd_sendNibble(0x03, false);
-	delay_millisecond(1);
+	delay_millisecond(5);
 	
 	lcd_sendNibble(0x02, false);
 	delay_millisecond(1);
@@ -101,9 +101,5 @@ int lcd_init(void){
 	
 }
 
-void lcd_print(const char *str) {
-    while (*str) {
-        lcd_sendByte(*str++, true);
-    }
-}
+
 
