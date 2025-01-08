@@ -11,8 +11,10 @@ int main() {
 	int gpio = GPIO_init();	
 	int lcd = lcd_init();
 	
-	
 	lcd_print("Hello World");
+	
+	
+	
 
   
 
