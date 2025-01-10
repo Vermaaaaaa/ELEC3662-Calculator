@@ -39,6 +39,7 @@ typedef enum {
 
 int lcd_init(void);
 int lcd_print(const char *str);
+void lcd_clear();
 
 
 static int lcd_sendNibble(unsigned char nibble, bool_t isData);

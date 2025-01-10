@@ -108,7 +108,7 @@ int lcd_init(void){
 	lcd_sendByte(DISPLAY_CONTROL & ~0x04, false); 
 	
 	lcd_sendByte(CLEAR, false);
-	
+	 
 	lcd_sendByte(ENTRY_MODE_SET | 0x02 , false);
 	
 	lcd_sendByte(DISPLAY_CONTROL | 0x07, false);
@@ -117,11 +117,18 @@ int lcd_init(void){
 
 }
 
+void lcd_clear(){
+	lcd_sendByte(CLEAR, false);
+}
+
+
+
 
 int lcd_print(const char* str){
 	while(*str){
 		lcd_sendByte(*str++, true);
 	}
+	return SUCCESS;
 }
 
 

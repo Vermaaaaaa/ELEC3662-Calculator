@@ -1,6 +1,8 @@
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
+#include "bool.h"
+
 // GPIO Port D Registers (Keypad Columns)
 #define GPIO_PORTD_DATA_R       (*((volatile unsigned long *)0x400073FC))
 #define GPIO_PORTD_DIR_R        (*((volatile unsigned long *)0x40007400))
@@ -25,51 +27,53 @@
 #define GPIO_PORTE_AMSEL_R      (*((volatile unsigned long *)0x40024528))
 #define GPIO_PORTE_PCTL_R       (*((volatile unsigned long *)0x4002452C))
 
+typedef enum {
+    ZERO,
+    ONE,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    PLUS,
+    MINUS,
+    DECIMAL,
+    SHIFT,
+    EDIT,
+    EQUALS,
+    SIN,
+    COS,
+    TAN,
+    MULT,
+    ARCSIN,
+    ARCCOS,
+    ARCTAN,
+    SQUARE,
+    SQRT,
+    SAVE,
+    DIV,
+    SCINOT,
+    UNSHIFT,
+    CLEAR_INPUT,
+    POWER,
+    PI,
+    NULL_VALUE
+} keypad_value;
 
 
 
+keypad_value get_key();
+int keypad_init();
+char* unshiftedToString(char value);
+const char *get_key_string(keypad_value key);
 
-char keypad_getKey();
-void keypad_init();
 
+extern const keypad_value layout[4][4];
 
-typedef enum{
-	ZERO,
-	ONE,
-	TWO,
-	THREE,
-	FOUR,
-	FIVE,
-	SIX,
-	SEVEN,
-	EIGHT,
-	NINE,
-	PLUS,
-	MINUS,
-	DECIMAL,
-	SHIFT,
-	END,
-	EDIT
-}unshifted_value;
-
-typedef enum{
-	PI,
-	SIN,
-	COS,
-	TAN,
-	ARCSIN,
-	ARCCOS,
-	ARCTAN,
-	SQUARE,
-	SQRT,
-	SAVE,
-	MULT,
-	DIV,
-	SCINOT,
-	UNSHIFT,
-	SHIFTEND,
-	CLEAR
-}shifted_value;
+extern const keypad_value shifted_layout[4][4]; 
  
 
 #endif
