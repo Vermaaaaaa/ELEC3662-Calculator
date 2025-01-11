@@ -10,9 +10,10 @@
 #define ERROR   -1
 #define TIMEOUT      1000 
 #define MAX_RETRIES 3
-#define MAX_INPUT_BUFFER 128
+#define MAX_INPUT_BUFFER 32
 
 #define DECIMAL_ERROR -2
+#define TOKEN_LIMIT_ERROR -3 
 
 int GPIO_init();
 static void triggerSystemReset();

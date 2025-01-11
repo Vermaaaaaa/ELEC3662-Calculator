@@ -3,10 +3,10 @@
 
 #include "keypad.h"
 
-#define MAX_TOKENS 128
+#define MAX_TOKENS 32
 
 typedef struct{
-	enum {TOKEN_NUM, TOKEN_OP, TOKEN_FUNC} type;
+	enum {TOKEN_NUM, TOKEN_OP, TOKEN_FUNC} token_type;
 	double value;
 	keypad_value op;
 } token_t;
