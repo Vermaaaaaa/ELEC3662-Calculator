@@ -36,7 +36,7 @@ int tokenise(keypad_value *input, token_t *tokens, unsigned char* token_index) {
                 if (index >= MAX_TOKENS) {return TOKEN_LIMIT_ERROR;}
                 tokens[index++] = (token_t){
                     .token_type = TOKEN_NUM,
-                    .value = current_number
+                    .data.value = current_number
                 };
                 current_number = 0.0;
                 isDecimal = false;
@@ -48,7 +48,7 @@ int tokenise(keypad_value *input, token_t *tokens, unsigned char* token_index) {
                 if (index >= MAX_TOKENS) {return TOKEN_LIMIT_ERROR;}
                 tokens[index++] = (token_t){
                     .token_type = TOKEN_OP,
-                    .op = key
+                    .data.op = key
                 };
             }
         }
@@ -59,7 +59,7 @@ int tokenise(keypad_value *input, token_t *tokens, unsigned char* token_index) {
         if (index >= MAX_TOKENS) {return TOKEN_LIMIT_ERROR;}
         tokens[index++] = (token_t){
             .token_type = TOKEN_NUM,
-            .value = current_number
+            .data.value = current_number
         };
     }
 
