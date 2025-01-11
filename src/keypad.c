@@ -101,7 +101,7 @@ keypad_value get_key(void)
 const char *get_key_string(keypad_value key)
 {
     if (key == NULL_VALUE) {
-        return " ";
+        return "";
     }
     return key_strings[key];
 }

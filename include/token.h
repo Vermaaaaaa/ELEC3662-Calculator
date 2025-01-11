@@ -3,13 +3,15 @@
 
 #include "keypad.h"
 
-typedef enum {
-    TOKEN_NUMBER,
-    TOKEN_OPERATOR,
-    TOKEN_FUNCTION
-} token_type;
+#define MAX_TOKENS 128
 
+typedef struct{
+	enum {TOKEN_NUM, TOKEN_OP, TOKEN_FUNC} type;
+	double value;
+	keypad_value op;
+} token_t;
 
+int tokenise(keypad_value *input, token_t *tokens, unsigned char* token_index);
 
 
 

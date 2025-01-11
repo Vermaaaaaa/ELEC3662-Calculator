@@ -5,7 +5,8 @@
 #include "token.h"
 
 
-#define NULL 0
+
+
 
 
 int main() {
@@ -16,15 +17,24 @@ int main() {
 	int lcd = lcd_init();
 	int keypad = keypad_init();
 	
+	keypad_value input_buffer[MAX_INPUT_BUFFER];
+	unsigned char buffer_index = 0;
+	
+	
 
-	
-	
-	
 	while (1) {
         keypad_value key = get_key(); 
         if(key == NULL_VALUE){
 					continue;
 				}
+				
+				if(buffer_index > MAX_INPUT_BUFFER){					
+					continue;
+				}
+				
+				input_buffer[buffer_index] = key;
+				buffer_index++;
+				
 				const char *str = get_key_string(key);
 				lcd_print(str);
     }
