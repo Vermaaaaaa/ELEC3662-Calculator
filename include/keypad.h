@@ -60,6 +60,7 @@ typedef enum {
     CLEAR_INPUT,
     POWER,
     PI,
+		UNARY_MINUS, 
     NULL_VALUE
 } keypad_value;
 
