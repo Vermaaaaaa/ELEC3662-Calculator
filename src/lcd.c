@@ -3,6 +3,15 @@
 #include "bool.h"
 #include "utility.h"
 
+
+// Define global variables to track cursor position
+unsigned char current_row = 1;
+unsigned char current_column = 0;
+
+// Define row start addresses for a 20x4 LCD
+static const unsigned char row_start_addresses[4] = { 0x00, 0x40, 0x14, 0x54 };
+
+
 static int PortA_B_init(){
 
     GPIO_PORTA_LOCK_R = 0x4C4F434B;      
@@ -119,16 +128,40 @@ int lcd_init(void){
 
 void lcd_clear(){
 	lcd_sendByte(CLEAR, false);
+	current_row = 1;
+	current_column = 0;
+}
+
+void lcd_setCursor(unsigned char row, unsigned char col)
+{
+    if (row < 1) row = 1;      
+    if (row > 4) row = 4;
+    if (col > 19) col = 19;    
+
+    unsigned char base = row_start_addresses[row - 1];
+    unsigned char addr = base + col;  
+
+    lcd_sendByte(0x80 | addr, false);
 }
 
 
-
-
-int lcd_print(const char* str){
-	while(*str){
-		lcd_sendByte(*str++, true);
-	}
-	return SUCCESS;
+int lcd_print(const char* str)
+{
+    while (*str) {
+        lcd_sendByte(*str, true);
+        current_column++;
+        if (current_column >= 20) {
+           
+            current_column = 0;
+            current_row++;
+            if (current_row > 4) {
+                current_row = 1;
+            }
+            lcd_setCursor(current_row, current_column);
+        }
+        str++;
+    }
+    return SUCCESS;
 }
 
 

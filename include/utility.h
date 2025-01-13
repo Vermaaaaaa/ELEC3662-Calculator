@@ -10,7 +10,7 @@
 #define ERROR   -1
 #define TIMEOUT      1000 
 #define MAX_RETRIES 3
-#define MAX_INPUT_BUFFER 32
+#define MAX_INPUT_BUFFER 24
 
 
 

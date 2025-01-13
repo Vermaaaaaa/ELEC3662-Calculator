@@ -3,7 +3,7 @@
 
 #include "keypad.h"
 
-#define MAX_TOKENS 32
+#define MAX_TOKENS 24
 #define MAX_INPUT_BUFFER 32
 
 

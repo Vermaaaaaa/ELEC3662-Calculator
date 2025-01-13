@@ -47,16 +47,16 @@ void SysTick_Wait(unsigned int delay){
   while((NVIC_ST_CTRL_R&0x00010000)==0){};
 }
 
-void delay_millisecond(unsigned char delay){
-	unsigned char i;
+void delay_millisecond(unsigned int delay){
+	unsigned int i;
 	
 	for(i = 0; i < delay; i++){
 		SysTick_Wait(80000);
 	}
 	
 }
-void delay_microsecond(unsigned char delay){
-	unsigned char i;
+void delay_microsecond(unsigned int delay){
+	unsigned int i;
 	
 	for(i = 0; i < delay; i++){
 		SysTick_Wait(80);

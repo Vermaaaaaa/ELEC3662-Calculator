@@ -3,6 +3,9 @@
 
 #define MAX_STACK_SIZE 32
 
+#define STACK_SUCCESS 0
+#define STACK_ERROR -1
+
 
 typedef struct{
 	int stk[MAX_STACK_SIZE];

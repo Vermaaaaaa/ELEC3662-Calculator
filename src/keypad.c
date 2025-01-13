@@ -20,9 +20,9 @@ const keypad_value shifted_layout[4][4] = {
 
 const char *key_strings[] = {
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-    "+", "-", ".", "", "EDIT", "=", "SIN", "COS", "TAN", "x",
-    "ARCSIN", "ARCCOS", "ARCTAN", "^2", "SQRT", "M+", "/",
-    "E10", "", "CLEAR_INPUT", "^", "PI"
+    "+", "-", ".", "", "", "=", "SIN", "COS", "TAN", "x",
+    "ASIN", "ACOS", "ATAN", "^2", "SQRT", "M+", "/",
+    "E10", "", "", "^", "PI"
 };
 
 
@@ -98,8 +98,7 @@ keypad_value get_key(void)
     return NULL_VALUE; 
 }
 
-const char *get_key_string(keypad_value key)
-{
+const char *get_key_string(keypad_value key){
     if (key == NULL_VALUE) {
         return "";
     }

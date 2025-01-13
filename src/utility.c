@@ -1,5 +1,8 @@
 #include "utility.h"
 #include "clock.h"
+#include "lcd.h"
+#include "keypad.h"
+
 
 int GPIO_init(){
 	volatile unsigned long delay;
@@ -50,6 +53,16 @@ void init(){
         if (gpio == ERROR) {
             counter++;
         }
+				
+				int lcd = lcd_init();
+				if(lcd == ERROR){
+					counter++;
+				}
+				
+				int keypad = keypad_init();
+				if(keypad == ERROR){
+					counter++;
+				}
 
         // Check if all initializations succeeded
         if (counter == 0) {
