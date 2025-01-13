@@ -22,7 +22,7 @@ int infix_to_postfix(token_t *infix, unsigned char infix_index, token_t *postfix
 		else if(current_token.token_type == TOKEN_OP){
 			keypad_value current_token_op = current_token.data.op;
 			
-			pop_operators_to_postfix(&op_stack, postfix, postfix_index, current_token_op);
+			pop_to_postfix(&op_stack, postfix, postfix_index, current_token_op);
 			
 			stack_push(&op_stack, current_token_op);
 		}
@@ -46,9 +46,9 @@ int infix_to_postfix(token_t *infix, unsigned char infix_index, token_t *postfix
 static int op_precedence(keypad_value op) {
     switch (op) {
         case POWER: return 3;
-        case DIV:
+        case DIV:	return 3;
 				case MULT: return 2;
-        case PLUS: 
+        case PLUS: return 2;
         case MINUS: return 1;
         default:    return 0; 
     }
@@ -141,7 +141,7 @@ static bool_t is_unary_operator(token_t prev_token, token_t current_token) {
 }
 
 
-static void pop_operators_to_postfix(stack *op_stack, token_t *postfix, unsigned char* postfix_index, keypad_value current_op){
+static void pop_to_postfix(stack *op_stack, token_t *postfix, unsigned char* postfix_index, keypad_value current_op){
     while (!stack_isEmpty(op_stack)) {
         int top_op = op_stack->stk[op_stack->top];
 

@@ -14,7 +14,7 @@ int double_stack_push_d(double_stack *s, double value) {
         s->stk[++(s->top)] = value;
         return SUCCESS;
     }
-    return ERROR; // stack overflow
+    return ERROR;
 }
 
 int double_stack_pop_d(double_stack *s, double *out_value) {
@@ -22,5 +22,5 @@ int double_stack_pop_d(double_stack *s, double *out_value) {
         *out_value = s->stk[s->top--];
         return SUCCESS;
     }
-    return ERROR; // stack underflow
+    return ERROR; 
 }

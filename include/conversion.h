@@ -31,7 +31,7 @@ bool_t is_function(keypad_value op);
 
 static bool_t is_unary_operator(token_t prev_tokem, token_t current_token);
 
-static void pop_operators_to_postfix(stack *operator_stack, token_t *postfix, unsigned char* postfix_index, keypad_value current_op);
+static void pop_to_postfix(stack *operator_stack, token_t *postfix, unsigned char* postfix_index, keypad_value current_op);
 
 
 

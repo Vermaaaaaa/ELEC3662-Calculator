@@ -4,11 +4,10 @@
 #include "utility.h"
 
 
-// Define global variables to track cursor position
 unsigned char current_row = 1;
 unsigned char current_column = 0;
 
-// Define row start addresses for a 20x4 LCD
+
 static const unsigned char row_start_addresses[4] = { 0x00, 0x40, 0x14, 0x54 };
 
 
@@ -113,7 +112,7 @@ int lcd_init(void){
 	
 	lcd_sendByte(FUNCTION_SET | 0x08, false);
 	
-	//Display OFF
+
 	lcd_sendByte(DISPLAY_CONTROL & ~0x04, false); 
 	
 	lcd_sendByte(CLEAR, false);
